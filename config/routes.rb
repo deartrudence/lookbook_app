@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount ShopifyApp::Engine, at: '/'
+
+  root to: 'api/v1/home#index'
   namespace :api do
     namespace :v1 do
       get 'home/index'

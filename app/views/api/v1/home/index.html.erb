@@ -10,7 +10,8 @@
 <%= content_tag :div,
 id: "product-list",
 data: {
-  products: @products
+  products: @products,
+  static_text: t('static_text')
 }.to_json do %>
 <% end %>
 

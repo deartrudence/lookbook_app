@@ -2,22 +2,26 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { AppProvider, Page, Stack, TextStyle, Card, ResourceList } from '@shopify/polaris'
 
+
+
 class ProductList extends Component {
 	constructor(props) {
 		super(props);
 	}
 
 	renderProduct = (product) => {
-		const { id, title, image } = product
+		const { id, shopify_title, shopify_image_url } = product
 		return (
 			<ResourceList.Item
 				id={id}
-				accessibilityLabel={`details for ${title}`}
+				accessibilityLabel={`details for ${shopify_title}`}
 			>
+				<a href={Routes.edit_api_v1_stored_product_path({id: id})} >
 				<Stack>
-					<img src={image.src} style={{width: '100px'}} />
-					<h3><TextStyle>{title}</TextStyle></h3>
+					<img src={shopify_image_url} style={{width: '100px'}} />
+					<h3><TextStyle>{shopify_title}</TextStyle></h3>
 				</Stack>
+				</a>
 
 			</ResourceList.Item>
 		)

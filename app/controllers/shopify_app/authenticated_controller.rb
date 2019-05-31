@@ -11,11 +11,16 @@ module ShopifyApp
       end
 
       I18n.locale = I18n.available_locales.include?(locale) ? locale : I18n.default_locale
+      puts locale 
+      puts '🕌'
     end
 
     private
       def set_shop
+
         @shop = Shop.find_by(id: session[:shopify])
+        puts '😄'
+        puts @shop
         set_locale
       end
 

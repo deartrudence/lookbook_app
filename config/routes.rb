@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      resources :stored_products
+    end
+  end
   mount ShopifyApp::Engine, at: '/'
 
   root to: 'api/v1/home#index'

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190528195422) do
+ActiveRecord::Schema.define(version: 20190531164011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blocks", force: :cascade do |t|
+    t.string "block_id"
+    t.string "block_type"
+    t.text "block_text"
+    t.string "image_url"
+    t.text "lookbook_html"
+    t.bigint "stored_product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stored_product_id"], name: "index_blocks_on_stored_product_id"
+  end
 
   create_table "product_images", force: :cascade do |t|
     t.string "image_url"
@@ -45,6 +57,7 @@ ActiveRecord::Schema.define(version: 20190528195422) do
     t.index ["shop_id"], name: "index_stored_products_on_shop_id"
   end
 
+  add_foreign_key "blocks", "stored_products"
   add_foreign_key "product_images", "stored_products"
   add_foreign_key "stored_products", "shops"
 end

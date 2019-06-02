@@ -20,7 +20,7 @@ module ShopifyApp
     end
 
     def check_for_recurring_charge  
-      sess = ShopifyAPI::Session.new(shop_name, token)
+      sess = ShopifyAPI::Session.new(domain: shop_name, token: token, api_version: '2019-04')
       ShopifyAPI::Base.activate_session(sess)
       if ShopifyAPI::RecurringApplicationCharge.current
         redirect_to return_address

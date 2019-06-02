@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  get 'activatecharge', to: 'charges#activate_charge'
+
   namespace :api do
     namespace :v1 do
       get 'front_end/index'

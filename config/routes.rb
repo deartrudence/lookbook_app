@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get 'front_end/index'
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
       resources :stored_products
     end
   end
